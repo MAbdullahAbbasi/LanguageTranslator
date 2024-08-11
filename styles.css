@@ -1,0 +1,90 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, rgba(126, 120, 120, 0.7), rgba(3, 3, 3, 0.7)), url('https://www.bing.com/th/id/OGC.5f29b3c9529b39d406ea6bf14f6c712d?pid=1.7&rurl=https%3a%2f%2fart.pixilart.com%2f580cd0ea9425d83.gif&ehk=2C84UigbK%2fJxWMo1h7GYVRdKDng%2betQXj73JHGByE%2fs%3d');    
+    background-size: cover;
+    background-attachment: fixed;
+    color: #fff;
+}
+
+.container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    max-width: 400px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    resize: none;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+    outline: none;
+    background: #fff;
+    color: #333;
+    height: 100px;
+}
+
+select {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+    outline: none;
+    background: #fff;
+    color: #333;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+    background: #2196F3;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 48%;
+}
+
+button:hover {
+    background: #1769aa;
+}
+
+/* Make sure the inputs are compulsory */
+input:required, select:required, textarea:required {
+    box-shadow: none;
+}
+
+button:disabled {
+    background: #ddd;
+    cursor: not-allowed;
+}
