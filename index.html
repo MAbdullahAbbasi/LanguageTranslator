@@ -283,7 +283,6 @@ document.getElementById('convert-button').addEventListener('click', function(eve
         }
     })
     .catch(error => {
-        alert('hi')
         console.error('Error translating text:', error);
         document.getElementById('convert-result').textContent = 'An error occurred while translating the text.';
     });
