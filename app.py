@@ -2,10 +2,14 @@ from flask import Flask, request, jsonify, send_from_directory, make_response
 from googletrans import Translator
 from flask_cors import CORS
 import os
+import logging
 
 app = Flask(__name__)
 CORS(app)
 translator = Translator()
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
 
 @app.route('/')
 def index():
@@ -27,7 +31,7 @@ def detect_language():
         detection = translator.detect(text)
         return jsonify({'language': detection.lang})
     except Exception as e:
-        print(f"Error detecting language: {e}")
+        logging.error(f"Error detecting language: {e}")
         return jsonify({'error': 'Failed to detect language'}), 500
 
 @app.route('/convert-language', methods=['POST'])
@@ -43,7 +47,7 @@ def convert_language():
         translation = translator.translate(text, dest=target_language)
         return jsonify({'translatedText': translation.text})
     except Exception as e:
-        print(f"Error translating text: {e}")
+        logging.error(f"Error translating text: {e}")
         return jsonify({'error': 'Failed to translate text'}), 500
 
 @app.after_request
@@ -66,4 +70,7 @@ def apply_headers(response):
     return response
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Use environment variable for host and port configuration
+    host = os.environ.get('FLASK_RUN_HOST', '0.0.0.0')
+    port = int(os.environ.get('FLASK_RUN_PORT', 5000))
+    app.run(host=host, port=port, debug=False)
